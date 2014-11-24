@@ -45,9 +45,9 @@ def login_to_twitter(driver, login, password):
 def login_to_slivki(driver, login, password):
     driver.get(SLIVKI_URL)
     get_element(driver, '.topUserLoginBox a').click()
-    get_element(driver, 'input#userRegLoginEmail').send_keys(login)
-    get_element(driver, 'input#userRegLoginPassword').send_keys(password)
-    get_element(driver, 'input#userRegLoginBtn').submit()
+    get_element(driver, '.userLoginFormTable input#userRegLoginEmail').send_keys(login)
+    get_element(driver, '.userLoginFormTable input#userRegLoginPassword').send_keys(password)
+    get_element(driver, '.userLoginFormTable input#userRegLoginBtn').submit()
 
 
 def go_to_action(driver):
