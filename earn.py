@@ -89,12 +89,12 @@ def remove_tweets(driver, load_page=False):
     remove_buttons = driver.find_elements_by_xpath(
         '''//*[starts-with(@id,'stream-item-tweet-')]/div/div[2]/
         p/a[contains(@data-expanded-url, 'slivki')]/
-        ../..//div[contains(@class, 'more')]''')
+        ../..//div[contains(@class, 'more')]/div/button''')
 
     if len(remove_buttons) > 0:
         remove_buttons[0].click()
-        remove_buttons[0].find_element_by_css_selector(
-            'li.js-actionDelete button').click()
+        remove_buttons[0].find_element_by_xpath('..')\
+            .find_element_by_css_selector('li.js-actionDelete button').click()
         get_element(driver, 'div.modal-footer button.delete-action').click()
 
     if len(remove_buttons) > 1:
@@ -154,7 +154,7 @@ def main():
             sleep(2)
             need_remove = remove_tweets(driver, i == 0)
     except Exception as e:
-        print e.message
+        print e
     finally:
         driver.close()
 
